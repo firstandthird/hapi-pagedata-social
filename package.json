@@ -1,5 +1,5 @@
 {
-  "name": "pagedata-social",
+  "name": "hapi-pagedata-social",
   "version": "0.0.0",
   "description": "A library for retrieving social data from a pagedata stream.",
   "main": "index.js",
