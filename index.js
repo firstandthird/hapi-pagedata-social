@@ -4,6 +4,11 @@ const pkg = require('./package.json');
 const Hoek = require('hoek');
 
 const defaults = {
+  pagedata: {
+    site: '',
+    slug: '',
+    tag: ''
+  }
   parserOptions: {
     twitter: {
       key: '',
