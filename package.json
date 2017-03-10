@@ -1,0 +1,35 @@
+{
+  "name": "pagedata-social",
+  "version": "0.0.0",
+  "description": "A library for retrieving social data from a pagedata stream.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/pagedata-social.git"
+  },
+  "keywords": [
+    "pagedata",
+    "social"
+  ],
+  "author": "First and Third",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/pagedata-social/issues"
+  },
+  "homepage": "https://github.com/firstandthird/pagedata-social#readme",
+  "devDependencies": {
+    "eslint": "3.12.2",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-config-firstandthird": "3.3.0",
+    "hapi": "^13.0.0"
+  },
+  "dependencies": {
+    "async": "^2.1.5",
+    "hapi-pagedata": "^0.8.0",
+    "hoek": "^4.1.0",
+    "urlinfo": "^1.2.0"
+  }
+}
