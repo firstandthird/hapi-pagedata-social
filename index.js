@@ -8,7 +8,7 @@ const defaults = {
     site: '',
     slug: '',
     tag: '',
-    parentKey: null
+    parentKey: 'socialPosts'
   },
   parserOptions: {
     twitter: {
