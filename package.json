@@ -30,6 +30,6 @@
     "async": "^2.1.5",
     "hapi-pagedata": "^0.8.0",
     "hoek": "^4.1.0",
-    "urlinfo": "^1.2.0"
+    "urlinfo": "^1.2.2"
   }
 }
