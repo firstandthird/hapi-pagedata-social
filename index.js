@@ -8,7 +8,7 @@ const defaults = {
     site: '',
     slug: '',
     tag: ''
-  }
+  },
   parserOptions: {
     twitter: {
       key: '',
