@@ -30,7 +30,8 @@ server.register({
   options: {
     pagedata: {
       site: 'example',
-      slug: 'some-page'
+      slug: 'some-page',
+      parentKey: 'socialData'
     },
     parserOptions: {
       instagram: {
@@ -53,11 +54,13 @@ server.register({
     method: 'GET',
     handler(request, reply) {
       reply({
-        content: [
-          'https://www.instagram.com/p/BDVkDO0oKOz/',
-          'https://www.instagram.com/p/BDVi2IHqHxy/',
-          'https://twitter.com/banks_jason/status/607291018447192064'
-        ]
+        content: {
+          socialData: [
+            'https://www.instagram.com/p/BDVkDO0oKOz/',
+            'https://www.instagram.com/p/BDVi2IHqHxy/',
+            'https://twitter.com/banks_jason/status/607291018447192064'
+          ]
+        }
       });
     }
   });

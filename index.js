@@ -7,7 +7,8 @@ const defaults = {
   pagedata: {
     site: '',
     slug: '',
-    tag: ''
+    tag: '',
+    parentKey: null
   },
   parserOptions: {
     twitter: {
