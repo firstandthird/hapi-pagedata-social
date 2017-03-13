@@ -28,6 +28,11 @@ server.register({
 server.register({
   register: require('../'),
   options: {
+    pagedata: {
+      site: 'example',
+      slug: 'some-page',
+      parentKey: 'socialData'
+    },
     parserOptions: {
       instagram: {
         token: ''
@@ -49,11 +54,13 @@ server.register({
     method: 'GET',
     handler(request, reply) {
       reply({
-        content: [
-          // 'https://www.instagram.com/p/BDVkDO0oKOz/',
-          // 'https://www.instagram.com/p/BDVi2IHqHxy/',
-          'https://twitter.com/banks_jason/status/607291018447192064'
-        ]
+        content: {
+          socialData: [
+            'https://www.instagram.com/p/BDVkDO0oKOz/',
+            'https://www.instagram.com/p/BDVi2IHqHxy/',
+            'https://twitter.com/banks_jason/status/607291018447192064'
+          ]
+        }
       });
     }
   });
@@ -63,7 +70,7 @@ server.register({
     method: 'GET',
     handler(request, reply) {
       const serv = request.server;
-      serv.methods.pageData.getSocial('another-site', 'social-posts', (routeErr, data) => {
+      serv.methods.pageData.getSocial((routeErr, data) => {
         if (routeErr) {
           return reply(routeErr);
         }
