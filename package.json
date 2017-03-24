@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "async": "^2.1.5",
-    "hapi-pagedata": "^0.8.0",
+    "hapi-pagedata": "^0.11.1",
     "hoek": "^4.1.0",
     "urlinfo": "^1.2.2"
   }
