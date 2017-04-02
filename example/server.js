@@ -6,7 +6,7 @@ const port = process.env.PORT || 8080;
 
 const server = new Hapi.Server({
   debug: {
-    log: ['pagedata', 'error', 'cache'],
+    log: ['pagedata', 'error', 'cache', 'pagedata-social'],
     request: ['error']
   }
 });
@@ -18,7 +18,6 @@ server.register({
     host: 'http://localhost:8080',
     key: 'target',
     verbose: true,
-    site: 'some-site',
     cache: {
       enabled: false
     }
@@ -29,7 +28,6 @@ server.register({
   register: require('../'),
   options: {
     pagedata: {
-      site: 'example',
       slug: 'some-page',
       parentKey: 'socialData'
     },
@@ -50,7 +48,7 @@ server.register({
 
   //mock pagedata
   server.route({
-    path: '/api/sites/{site}/pages/{page}',
+    path: '/api/pages/{page}',
     method: 'GET',
     handler(request, reply) {
       reply({
@@ -70,7 +68,7 @@ server.register({
     method: 'GET',
     handler(request, reply) {
       const serv = request.server;
-      serv.methods.pageData.getSocial((routeErr, data) => {
+      serv.methods.pagedata.getSocial((routeErr, data) => {
         if (routeErr) {
           return reply(routeErr);
         }

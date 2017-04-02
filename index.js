@@ -5,9 +5,7 @@ const Hoek = require('hoek');
 
 const defaults = {
   pagedata: {
-    site: '',
     slug: '',
-    tag: '',
     parentKey: 'socialPosts'
   },
   parserOptions: {
@@ -27,9 +25,9 @@ const defaults = {
     vimeo: {},
     basic: {}
   },
+  enableCache: true,
+  verbose: true,
   cache: {
-    segment: 'pagedata-social',
-    enabled: (process.env.NODE_ENV === 'production'),
     expiresIn: 1000 * 60 * 60 * 24 * 7, //1 week
     staleIn: 1000 * 60 * 60 * 23, //23 hours
     staleTimeout: 200,
@@ -38,28 +36,26 @@ const defaults = {
 };
 
 exports.register = function(server, options, next) {
-  if (!options) {
-    options = {};
-  }
-
-  const config = Hoek.applyToDefaults(defaults, options);
+  const config = Hoek.applyToDefaults(defaults, options, true);
 
   const internal = {
     server,
     config
   };
 
-  config.cache.generateFunc = require('./lib/urlInfo').bind(internal);
-  if (!config.cache.enabled) {
-    delete config.cache.staleIn;
-    delete config.cache.staleTimeout;
-    config.cache.expiresIn = 1;
-  }
-  delete config.cache.enabled;
-  internal.cache = server.cache(config.cache);
+  server.method('pagedata.getSocial', require('./lib/method-get').bind(internal), {
+    cache: config.enableCache ? Object.assign({}, config.cache) : undefined,
+    generateKey(key) {
+      return key || config.pagedata.parentKey;
+    }
+  });
 
-  server.method('pageData.getSocial', require('./lib/method-get').bind(internal));
-  server.method('pageData.processSocial', require('./lib/method-process').bind(internal));
+  server.method('pagedata.processSocial', require('./lib/method-process').bind(internal), {
+    cache: config.enableCache ? Object.assign({}, config.cache) : undefined,
+    generateKey(url) {
+      return url;
+    }
+  });
 
   next();
 };
