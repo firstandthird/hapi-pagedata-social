@@ -43,12 +43,7 @@ exports.register = function(server, options, next) {
     config
   };
 
-  server.method('pagedata.getSocial', require('./lib/method-get').bind(internal), {
-    cache: config.enableCache ? Object.assign({}, config.cache) : undefined,
-    generateKey(key) {
-      return key || config.pagedata.parentKey;
-    }
-  });
+  server.method('pagedata.getSocial', require('./lib/method-get').bind(internal));
 
   server.method('pagedata.processSocial', require('./lib/method-process').bind(internal), {
     cache: config.enableCache ? Object.assign({}, config.cache) : undefined,
