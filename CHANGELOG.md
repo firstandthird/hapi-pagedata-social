@@ -1,4 +1,9 @@
 
+0.4.3 / 2017-04-05
+==================
+
+  * Forcing data return on urlInfo error to cache with filter
+
 0.2.3 / 2017-03-24
 ==================
 
