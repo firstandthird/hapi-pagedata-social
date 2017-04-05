@@ -17,10 +17,7 @@ server.register({
   options: {
     host: 'http://localhost:8080',
     key: 'target',
-    verbose: true,
-    cache: {
-      enabled: false
-    }
+    verbose: true
   }
 });
 
@@ -56,7 +53,7 @@ server.register({
           socialData: [
             'https://www.instagram.com/p/BDVkDO0oKOz/',
             'https://www.instagram.com/p/BDVi2IHqHxy/',
-            'https://twitter.com/banks_jason/status/607291018447192064'
+            'https://www.instagram.com/p/BSeUOedjs5c/' 
           ]
         }
       });
