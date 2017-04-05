@@ -17,11 +17,7 @@ server.register({
   options: {
     host: 'http://localhost:8080',
     key: 'target',
-    verbose: true,
-    site: 'some-site',
-    cache: {
-      enabled: false
-    }
+    verbose: true
   }
 });
 
@@ -29,9 +25,7 @@ server.register({
   register: require('../'),
   options: {
     pagedata: {
-      site: 'example',
-      slug: 'some-page',
-      parentKey: 'socialData'
+      slug: 'pd-site-pd-slug'
     },
     parserOptions: {
       instagram: {
@@ -50,15 +44,15 @@ server.register({
 
   //mock pagedata
   server.route({
-    path: '/api/sites/{site}/pages/{page}',
+    path: '/api/pages/{page}',
     method: 'GET',
     handler(request, reply) {
       reply({
         content: {
-          socialData: [
+          socialPosts: [
             'https://www.instagram.com/p/BDVkDO0oKOz/',
             'https://www.instagram.com/p/BDVi2IHqHxy/',
-            'https://twitter.com/banks_jason/status/607291018447192064'
+            'https://www.instagram.com/p/BSeUOedjs5c/'
           ]
         }
       });
